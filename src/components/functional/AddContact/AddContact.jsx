@@ -9,7 +9,7 @@ const AddContact = () => {
     }
     return ( 
         <div className=" w-full">
-            <form className="p-2 max-w-xs mx-auto">
+            <form className="max-w-xs mx-auto">
                 <div className="flex flex-col justify-center items-start text-1 gap-1 w-full mb-3">
                     <label htmlFor="name">name</label>
                     <div className="border border-primary-4 flex justify-start items-center rounded-sm w-full">
