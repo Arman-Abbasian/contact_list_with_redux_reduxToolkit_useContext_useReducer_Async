@@ -4,6 +4,8 @@ import './App.css';
 import toast, { Toaster } from 'react-hot-toast';
 import AddContact from './components/functional/AddContact/AddContact';
 import Contacts from './components/functional/Contacts/Contacts';
+import Layout from './components/Layout/Layout';
+
 
 function App() {
   const [contacts,setContacts]=useState(null);
@@ -36,13 +38,17 @@ function App() {
     }
   }
 
-  return (
-    <div className="App">
-      <h1>contact App</h1>
-      <section className='mb-16'><AddContact submitHandler={addHandler} /></section>
-      <section className='flex flex-col gap-2'><Contacts contacts={contacts} deleteHandler={deleteHandler}/></section>
-      <Toaster />
-    </div>
+  return ( 
+        <Layout>
+          <div className="App">
+            <section className='mb-16'><AddContact submitHandler={addHandler} /></section>
+            <section className='flex flex-col gap-2 mb-12'><Contacts contacts={contacts} deleteHandler={deleteHandler}/></section>
+          </div>
+          <Toaster />
+        </Layout>
+        
+        
+   
   );
 }
 
