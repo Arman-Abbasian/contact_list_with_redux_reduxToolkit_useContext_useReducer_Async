@@ -2,14 +2,18 @@ import { useState } from "react";
 import { BsPerson } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 
-const AddContact = () => {
+const AddContact = ({submitHandler}) => {
     const [formValues,setFormValues]=useState({name:"",email:""});
     const changeFormHandler=(e)=>{
         setFormValues({...formValues,[e.target.name]:e.target.value})
+    };
+    const submitHandlerr=(e)=>{
+        submitHandler(e,formValues);
+        setFormValues({name:"",email:""});
     }
     return ( 
         <div className=" w-full">
-            <form className="max-w-xs mx-auto">
+            <form className="max-w-xs mx-auto" onSubmit={submitHandlerr}>
                 <div className="flex flex-col justify-center items-start text-1 gap-1 w-full mb-3">
                     <label htmlFor="name">name</label>
                     <div className="border border-primary-4 flex justify-start items-center rounded-sm w-full">
@@ -25,7 +29,7 @@ const AddContact = () => {
                     </div>
                 </div>
                 <div className="w-full">
-                    <button className="bg-primary-4 px-4 py-2 w-full rounded-sm">Add</button>
+                    <button type="submit" className="bg-primary-4 px-4 py-2 w-full rounded-sm">Add</button>
                 </div>
             </form>
         </div>
