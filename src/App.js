@@ -2,9 +2,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
 import toast, { Toaster } from 'react-hot-toast';
-import AddContact from './components/functional/AddContact/AddContact';
-import Contacts from './components/functional/Contacts/Contacts';
+import AddContact from './components/functional/AddContact';
+import Contacts from './components/functional/Contacts';
 import Layout from './components/Layout/Layout';
+import { Route, Routes } from 'react-router-dom';
+import ContactDetail from './components/functional/ContactDetail';
 
 
 function App() {
@@ -40,10 +42,11 @@ function App() {
 
   return ( 
         <Layout>
-          <div className="App">
-            <section className='mb-16'><AddContact submitHandler={addHandler} /></section>
-            <section className='flex flex-col gap-2 mb-12'><Contacts contacts={contacts} deleteHandler={deleteHandler}/></section>
-          </div>
+          <Routes>
+            <Route path='/add' element={<AddContact submitHandler={addHandler} />} />
+            <Route path='/' element={<Contacts contacts={contacts} deleteHandler={deleteHandler} />}/>
+            <Route path='/contact/:id' element={<ContactDetail contacts={contacts} deleteHandler={deleteHandler} />}/>
+          </Routes>
           <Toaster />
         </Layout>
         
