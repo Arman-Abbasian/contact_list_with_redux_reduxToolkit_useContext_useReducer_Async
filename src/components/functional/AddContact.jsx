@@ -12,7 +12,7 @@ const AddContact = ({submitHandler}) => {
         setFormValues({name:"",email:""});
     }
     return ( 
-        <div className=" w-full mb-16">
+        <div>
             <form className="max-w-xs mx-auto" onSubmit={submitHandlerr}>
                 <div className="flex flex-col justify-center items-start text-1 gap-1 w-full mb-3">
                     <label htmlFor="name">name</label>

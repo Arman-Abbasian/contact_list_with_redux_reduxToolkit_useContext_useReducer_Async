@@ -53,12 +53,14 @@ function App() {
 
   return ( 
         <Layout>
-          <Routes>
+          <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
+          <Routes> 
             <Route path='/add' element={<AddContact submitHandler={addHandler} />} />
             <Route path='/' element={<Contacts contacts={contacts} deleteHandler={deleteHandler} />}/>
             <Route path='/contact/:id' element={<ContactDetail contacts={contacts} deleteHandler={deleteHandler} />}/>
             <Route path='/edit/:id' element={<EditContact updateHandler={updateHandler} />}/>
           </Routes>
+          </div>
           <Toaster />
         </Layout>
         
