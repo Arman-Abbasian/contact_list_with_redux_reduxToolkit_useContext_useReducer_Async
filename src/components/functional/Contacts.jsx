@@ -3,9 +3,9 @@ import Contact from "./Contact";
 
 const Contacts = ({contacts,deleteHandler}) => {
     return ( 
-        <div className="flex flex-col gap-2 mb-12">
+        <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
             {contacts && contacts.map(contact=>{
-                return <Link key={contact.id} to={`/contact/${contact.id}`}><Contact key={contact.id} name={contact.name} email={contact.email} id={contact.id} deleteHandler={()=>deleteHandler(contact.id)}/></Link>
+                return <Link key={contact.id} to={`/contact/${contact.id}`}><Contact key={contact.id} name={contact.name} email={contact.email} id={contact.id}  deleteHandler={()=>deleteHandler(contact.id)}/></Link>
             })}
         </div>
      );

@@ -1,19 +1,9 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "name": "Afshari",
-      "email": "dd@dd.com"
-    },
-    {
-      "id": 2,
-      "name": "Ahmadi",
-      "email": "dd@dd.com"
-    },
-    {
-      "id": 3,
       "name": "Ahadi",
-      "email": "dd@dd.com"
+      "email": "Ahadi@dd.com",
+      "id": 3
     },
     {
       "name": "Arman",
