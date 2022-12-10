@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     return ( 
-        <header className="p-2 bg-primary-4 sticky top-0 right-0 left-0 mb-5">
+        <header className="p-2 bg-primary-4 sticky top-0 right-0 left-0 mb-5 z-10">
             <nav>
                 <ul className="flex justify-start items-center gap-10">
                     <li><img src={'/images/logo.png'} className='w-20' /></li>
