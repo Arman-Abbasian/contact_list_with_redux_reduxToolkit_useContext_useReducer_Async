@@ -29,8 +29,7 @@ function App() {
       toast.error(err.message);
     }
   }
-  const addHandler=async(e,formValues)=>{
-    e.preventDefault();
+  const addHandler=async(formValues)=>{
     try {
       await axios.post(`http://localhost:4000/contacts`,formValues);
       toast.success("contact added successfully");
@@ -55,7 +54,7 @@ function App() {
         <Layout>
           <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
           <Routes> 
-            <Route path='/add' element={<AddContact submitHandler={addHandler} />} />
+            <Route path='/add' element={<AddContact addHandler={addHandler} />} />
             <Route path='/' element={<Contacts contacts={contacts} deleteHandler={deleteHandler} />}/>
             <Route path='/contact/:id' element={<ContactDetail contacts={contacts} deleteHandler={deleteHandler} />}/>
             <Route path='/edit/:id' element={<EditContact updateHandler={updateHandler} />}/>

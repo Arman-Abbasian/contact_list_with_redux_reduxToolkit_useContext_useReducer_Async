@@ -4,19 +4,22 @@ import * as Yup from 'yup';
 import { MdPersonOutline } from "react-icons/md";
 import { MdOutlineEmail } from "react-icons/md";
 import { BiMobile } from "react-icons/bi";
+import { CiLocationOn } from "react-icons/ci";
 import Textarea from "../../common/Textarea";
 
-const AddContact = () => {
-    const initialValues={name:"",email:"",telNumber:"",phoneNumber:"",address:""};
-    const onSubmit=(values)=>{
+const AddContact = ({addHandler}) => {
+    const initialValues={name:"",email:"",tel:"",phone:"",address:""};
+    const onSubmit=(values, { resetForm })=>{
         console.log(values);
+        addHandler(values);
+        resetForm()
     }
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 const validationSchema=Yup.object({
     name:Yup.string().required('name is required').min(6,"min character is 6"),
     email:Yup.string().email('the input is not an email').required('email is required'),
-    telNumber:Yup.string().required('tel number is required').matches(phoneRegExp, 'Phone number is not valid'),
-    phoneNumber: Yup.string().required("phone number is required").matches(phoneRegExp, 'Phone number is not valid'),
+    tel:Yup.string().required('tel number is required').matches(phoneRegExp, 'Phone number is not valid'),
+    phone: Yup.string().required("phone number is required").matches(phoneRegExp, 'Phone number is not valid'),
     address:Yup.string().required('address is required').min(10,"min character is 10"),
 });
 const formik=useFormik({initialValues,onSubmit,validationSchema,validateOnMount:true});
@@ -31,8 +34,8 @@ console.log(formik.isValid);
                 <Input name='email'  formik={formik} logo={<MdOutlineEmail className="w-6 h-6 text-primary-4 ml-1" />}/>
                 <Input name='tel' formik={formik} logo={<BiMobile  className="w-6 h-6 text-primary-4 ml-1" />} />
                 <Input name='phone'  formik={formik} logo={<MdOutlineEmail className="w-6 h-6 text-primary-4 ml-1" />}/>
-                <Textarea name='address'  formik={formik} />
-                <button className="w-full p-2 rounded-sm bg-primary-4" type="submit">Add</button>
+                <Textarea name='address'  formik={formik} logo={<CiLocationOn className="w-6 h-6 text-primary-4 ml-1" />} />
+                <button className="w-full p-2 rounded-sm bg-primary-4 mt-10" type="submit">Add</button>
                 
             </form>
         </div>
