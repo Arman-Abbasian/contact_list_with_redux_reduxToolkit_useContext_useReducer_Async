@@ -44,7 +44,7 @@ export const useContactsActions=()=>{
           await axios.delete(`http://localhost:4000/contacts/${id}`);
           toast.success("contact deleted successfully");
           const {data}=await axios.get(`http://localhost:4000/contacts`);
-          setContacts(data);
+          setContacts({data:data,loading:false,error:null});
         } catch (err) {
           toast.error(err.message);
         }
@@ -55,7 +55,7 @@ export const useContactsActions=()=>{
           await axios.post(`http://localhost:4000/contacts`,formValues);
           toast.success("contact added successfully");
           const {data}=await axios.get(`http://localhost:4000/contacts`)
-          setContacts(data)
+          setContacts({data:data,loading:false,error:null})
         } catch (err) {
           toast.error(err.message)
         }
@@ -66,7 +66,7 @@ export const useContactsActions=()=>{
           await axios.put(`http://localhost:4000/contacts/${id}`,formValues);
           toast.success("contact updated successfully");
           const {data}=await axios.get(`http://localhost:4000/contacts`)
-          setContacts(data)
+          setContacts({data:data,loading:false,error:null})
         } catch (err) {
           toast.error(err.message)
         }

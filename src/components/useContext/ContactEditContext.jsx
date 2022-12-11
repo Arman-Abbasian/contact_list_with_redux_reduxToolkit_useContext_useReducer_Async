@@ -11,8 +11,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useContactsActions } from "../../providers/ContactsProvider";
 
-const EditContactContext = ({updateHandler}) => {
+const EditContactContext = () => {
+    const {updateHandler}=useContactsActions();
     const id=useParams().id;
     const [formValues,setFormValues]=useState(null);
     const initialValues={name:"",email:"",mobile:"",phone:"",address:""};
@@ -51,7 +53,7 @@ console.log(formik.isValid);
                 <Input name='mobile' formik={formik} logo={<BiMobile  className="w-6 h-6 text-primary-4 ml-1" />} />
                 <Input name='phone'  formik={formik} logo={<AiOutlinePhone className="w-6 h-6 text-primary-4 ml-1" />}/>
                 <Textarea name='address'  formik={formik} logo={<CiLocationOn className="w-6 h-6 text-primary-4 ml-1" />} />
-                <button className={`w-full p-2 rounded-sm bg-primary-4 mt-10 opacity-70  ${formik.isValid && 'opacity-100 cursor-pointer'}`} disabled={!formik.isValid} type="submit">Add</button>
+                <button className={`w-full p-2 rounded-sm bg-primary-4 mt-10 opacity-70  ${formik.isValid && 'opacity-100 cursor-pointer'}`} disabled={!formik.isValid} type="submit">update</button>
                 
             </form>
         </div>
