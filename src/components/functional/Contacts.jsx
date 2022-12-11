@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Contact from "./Contact";
 
 const Contacts = ({contacts,deleteHandler}) => {
