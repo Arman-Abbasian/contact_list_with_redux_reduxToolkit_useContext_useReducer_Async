@@ -5,7 +5,7 @@ const Contacts = ({contacts,deleteHandler}) => {
     return ( 
         <div className="flex flex-col gap-2">
             {contacts && contacts.map(contact=>{
-                return <Link key={contact.id} to={`/contact/${contact.id}`}><Contact key={contact.id} name={contact.name} email={contact.email} id={contact.id}  deleteHandler={()=>deleteHandler(contact.id)}/></Link>
+                return <Contact key={contact.id} name={contact.name} email={contact.email} id={contact.id}  deleteHandler={(e)=>deleteHandler(e,contact.id)}/>
             })}
         </div>
      );

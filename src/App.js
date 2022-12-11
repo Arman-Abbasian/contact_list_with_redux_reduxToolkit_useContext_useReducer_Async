@@ -19,8 +19,10 @@ function App() {
 
   },[]);
 
-  const deleteHandler=async(id)=>{
+  const deleteHandler=async(e,id)=>{
     try {
+      console.log(id);
+      e.stopPropagation();
       await axios.delete(`http://localhost:4000/contacts/${id}`);
       toast.success("contact deleted successfully");
       const {data}=await axios.get(`http://localhost:4000/contacts`);
@@ -56,7 +58,7 @@ function App() {
           <Routes> 
             <Route path='/add' element={<AddContact addHandler={addHandler} />} />
             <Route path='/' element={<Contacts contacts={contacts} deleteHandler={deleteHandler} />}/>
-            <Route path='/contact/:id' element={<ContactDetail contacts={contacts} deleteHandler={deleteHandler} />}/>
+            <Route path='/contact/:id' element={<ContactDetail contacts={contacts} />}/>
             <Route path='/edit/:id' element={<EditContact updateHandler={updateHandler} />}/>
           </Routes>
           </div>

@@ -19,9 +19,11 @@ const ContactDetail = () => {
         if (contact.loading)  return <p>loading</p>
         if(!contact.loading && contact.error ) return <p>{contact.error}</p>
         if(contact.data)  return (<div>
-            <h2 className="mb-2"><span className="font-bold">name:</span> {contact.data.name}</h2>
+            <h2 className="mb-5"><span className="font-bold">name:</span> {contact.data.name}</h2>
             <h2 className="mb-5"><span className="font-bold">email:</span> {contact.data.email}</h2>
-            <p><span className="font-bold">information:</span> {contact.data.info}</p>
+            <h2 className="mb-5"><span className="font-bold">mobile:</span> {contact.data.mobile}</h2>
+            <h2 className="mb-5"><span className="font-bold">phone:</span> {contact.data.phone}</h2>
+            <h2 className="mb-5"><span className="font-bold">address:</span> {contact.data.address}</h2>
             </div>
         )
     }
