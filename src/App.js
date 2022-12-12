@@ -75,14 +75,14 @@ function App() {
         
           <Layout>
             <ContactsProvider>
-          <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
-           <Routes> 
-             <Route path='/add' element={<AddContactContext />} />
-             <Route path='/' element={<ContactsContext />}/>
-             <Route path='/contact/:id' element={<ContactDetailContext />}/>
-             <Route path='/edit/:id' element={<EditContactContext />}/>
-           </Routes>
-           </div>
+              <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
+                <Routes> 
+                  <Route path='/add' element={<AddContactContext />} />
+                  <Route path='/' element={<ContactsContext />}/>
+                  <Route path='/contact/:id' element={<ContactDetailContext />}/>
+                  <Route path='/edit/:id' element={<EditContactContext />}/>
+                </Routes>
+              </div>
            <Toaster />
            </ContactsProvider>
           </Layout>
