@@ -12,9 +12,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useContactsActions } from "../../providers/ContactsProvider";
+import { useDispatch } from "react-redux";
+import { putOneContact } from "../../redux/contacts/contactsAction";
 
 const EditContactRedux = () => {
-    const {updateHandler}=useContactsActions();
+    const dispatch=useDispatch();
     const id=useParams().id;
     const [formValues,setFormValues]=useState(null);
     const initialValues={name:"",email:"",mobile:"",phone:"",address:""};
@@ -28,12 +30,12 @@ const EditContactRedux = () => {
     },[])
     const onSubmit=(values, { resetForm })=>{
         console.log(values);
-        updateHandler(values,id);
+        dispatch(putOneContact({formValues:values,id}));
         resetForm();
         navigate("/")
     }
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-const validationSchema=Yup.object({
+    const validationSchema=Yup.object({
     name:Yup.string().required('name is required').min(6,"min character is 6"),
     email:Yup.string().email('the input is not an email').required('email is required'),
     mobile:Yup.string().required('mobile number is required').matches(phoneRegExp, 'Phone number is not valid'),

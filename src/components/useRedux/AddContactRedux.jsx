@@ -8,16 +8,19 @@ import { CiLocationOn } from "react-icons/ci";
 import { AiOutlinePhone } from "react-icons/ai";
 import Textarea from "../../common/Textarea";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addOneContact } from "../../redux/contacts/contactsAction";
 
-const AddContactRedux = ({addHandler}) => {
+const AddContactRedux = () => {
+    const dispatch=useDispatch();
     const initialValues={name:"",email:"",mobile:"",phone:"",address:""};
     let navigate = useNavigate();
     const onSubmit=(values, { resetForm })=>{
-        console.log(values);
-        addHandler(values);
+        dispatch(addOneContact(values))
         resetForm();
         navigate("/")
     }
+    
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 const validationSchema=Yup.object({
     name:Yup.string().required('name is required').min(6,"min character is 6"),

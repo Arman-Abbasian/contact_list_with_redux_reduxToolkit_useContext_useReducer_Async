@@ -1,10 +1,18 @@
-import Contact from "./Contact";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteOneContact, fetchContacts } from "../../redux/contacts/contactsAction";
+import ContactRedex from "./ContactRedux";
 
-const ContactsRedux = ({contacts,deleteHandler}) => {
+const ContactsRedux = () => {
+    const contacts=useSelector(state=>state.contacts);
+    const dispatch=useDispatch();
+    useEffect(()=>{
+        dispatch(fetchContacts())
+    },[])
     return ( 
         <div className="flex flex-col gap-2">
-            {contacts && contacts.map(contact=>{
-                return <Contact key={contact.id} name={contact.name} email={contact.email} id={contact.id}  deleteHandler={(e)=>deleteHandler(e,contact.id)}/>
+            {contacts.data && contacts.data.map(contact=>{
+                return <ContactRedex key={contact.id} name={contact.name} email={contact.email} id={contact.id} deleteHandler={()=>dispatch(deleteOneContact(contact.id))} />
             })}
         </div>
      );

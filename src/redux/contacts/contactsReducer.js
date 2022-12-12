@@ -2,7 +2,7 @@ import {DELETE_ONE_CONTACT_FAILURE, DELETE_ONE_CONTACT_SUCCESS, DELETE_ONE_COST_
 
 
 const initialState={
-    contacts:[],
+    data:[],
     error:"",
     laoding:false,
 }
@@ -10,39 +10,39 @@ export const contactsReducer=(state=initialState,action)=>{
     switch (action.type) {
         case FETCH_CONTACTS_REQUEST:{
             console.log(state)
-            return {contacts:[],error:"",laoding:true}
+            return {data:[],error:"",laoding:true}
         };
         case FETCH_CONTACTS_SUCCESS:{
             console.log(state)
-            return {contacts:action.payload,error:"",laoding:false}
+            return {data:action.payload,error:"",laoding:false}
         };
         case FETCH_CONTACTS_FAILURE:{
             console.log(state)
-            return {contacts:[],error:action.payload,laoding:false}
+            return {data:[],error:action.payload,laoding:false}
         }
         case POST_ONE_CONTACT_SUCCESS:{
             console.log(action.payload)
-            return {contacts:action.payload,error:"",laoding:false}
+            return {data:action.payload,error:"",laoding:false}
         };
         case POST_ONE_CONTACT_FAILURE:{
-            return {contacts:[],error:action.payload,laoding:false}
+            return {data:[],error:action.payload,laoding:false}
         };
         case DELETE_ONE_CONTACT_SUCCESS:{
             console.log(action.payload)
-            return {contacts:action.payload,error:"",laoding:false}
+            return {data:action.payload,error:"",laoding:false}
         };
         case DELETE_ONE_CONTACT_FAILURE:{
-            return {contacts:[],error:action.payload,laoding:false}
+            return {data:[],error:action.payload,laoding:false}
         };
         case EDIT_ONE_CONTACT_SUCCESS:{
             console.log(action.payload)
-            return {contacts:action.payload,error:"",laoding:false}
+            return {data:action.payload,error:"",laoding:false}
         };
         case EDIT_ONE_CONTACT_FAILURE:{
-            return {contacts:[],error:action.payload,laoding:false}
+            return {data:[],error:action.payload,laoding:false}
         };        
         default:
             return state;
     }
 }
-export default costsReducer;
+export default contactsReducer;

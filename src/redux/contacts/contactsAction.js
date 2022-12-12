@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
 import { DELETE_ONE_CONTACT_FAILURE, DELETE_ONE_CONTACT_SUCCESS, EDIT_ONE_CONTACT_FAILURE, EDIT_ONE_CONTACT_SUCCESS, FETCH_CONTACTS_FAILURE, FETCH_CONTACTS_REQUEST, FETCH_CONTACTS_SUCCESS, POST_ONE_CONTACT_FAILURE, POST_ONE_CONTACT_SUCCESS } from "./contactsType";
 
 const fetchContactsRequest=()=>{
@@ -55,7 +56,6 @@ const editContactSuccess=(payload)=>{
         payload
     }
 };
-
 export const fetchContacts=()=>{
     return function(dispatch){
         dispatch(fetchContactsRequest());
@@ -69,41 +69,50 @@ export const fetchContacts=()=>{
     }
 };
 export const addOneContact=(payload)=>{
-    console.log(payload)
     return function(dispatch){
         axios.post(`http://localhost:4000/contacts`,payload)
-        .then(res=> fetchContacts())
+        .then(res=>{
+            toast.success("data added successfully")  
+            axios.get(`http://localhost:4000/contacts`)
+        .then(res=>{
+            dispatch(postContactSuccess(res.data));
+        })   
+        }
+        )
         .catch(err=>{
+            toast.error(err.message)  
             dispatch(postContactFailure(err.message))
         })
     }
 };
 export const deleteOneContact=(payload)=>{
-    payload.e.stopPropagation();
     return function(dispatch){
-        axios.delete(`http://localhost:4000/contacts/${payload.id}`)
+        axios.delete(`http://localhost:4000/contacts/${payload}`)
         .then(res=>{
+            toast.success("data removed successfully")
             axios.get(`http://localhost:4000/contacts`)
             .then(res=>{
                 dispatch(deleteContactSuccess(res.data));
             })   
         })
         .catch(err=>{
+            toast.error(err.message)
             dispatch(deleteContactFailure(err.message))
         })
     }
 };
 export const putOneContact=(payload)=>{
-    console.log(payload)
     return function(dispatch){
         axios.put(`http://localhost:4000/contacts/${payload.id}`,payload.formValues)
         .then(res=>{
+            toast.success("data changed successfully");
             axios.get(`http://localhost:4000/contacts`)
             .then(res=>{
                 dispatch(editContactSuccess(res.data));
             })   
         })
         .catch(err=>{
+            toast.error(err.message)
             dispatch(editContactFailure(err.message))
         })
     }
