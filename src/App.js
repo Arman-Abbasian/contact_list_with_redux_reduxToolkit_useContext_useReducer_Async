@@ -16,6 +16,9 @@ import ContactsContext from './components/useContext/ContactsContext';
 import ContactDetailContext from './components/useContext/ContactDetailContext';
 import EditContactContext from './components/useContext/ContactEditContext';
 
+//redux
+import { Provider } from 'react-redux';
+import store from './redux/store.js';
 
 function App() {
   const [contacts,setContacts]=useState(null);
@@ -73,20 +76,25 @@ function App() {
         //   <Toaster />
         // </Layout>
         
-          <Layout>
-            <ContactsProvider>
-              <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
-                <Routes> 
-                  <Route path='/add' element={<AddContactContext />} />
-                  <Route path='/' element={<ContactsContext />}/>
-                  <Route path='/contact/:id' element={<ContactDetailContext />}/>
-                  <Route path='/edit/:id' element={<EditContactContext />}/>
-                </Routes>
-              </div>
-           <Toaster />
-           </ContactsProvider>
-          </Layout>
+          // <Layout>
+          //   <ContactsProvider>
+          //     <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
+          //       <Routes> 
+          //         <Route path='/add' element={<AddContactContext />} />
+          //         <Route path='/' element={<ContactsContext />}/>
+          //         <Route path='/contact/:id' element={<ContactDetailContext />}/>
+          //         <Route path='/edit/:id' element={<EditContactContext />}/>
+          //       </Routes>
+          //     </div>
+          //  <Toaster />
+          //  </ContactsProvider>
+          // </Layout>
         
+          <Layout>
+            <Provider store={store}>
+
+            </Provider>
+          </Layout>
         
    
   );

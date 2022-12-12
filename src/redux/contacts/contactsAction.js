@@ -1,8 +1,6 @@
 import axios from "axios";
 import { DELETE_ONE_CONTACT_FAILURE, DELETE_ONE_CONTACT_SUCCESS, EDIT_ONE_CONTACT_FAILURE, EDIT_ONE_CONTACT_SUCCESS, FETCH_CONTACTS_FAILURE, FETCH_CONTACTS_REQUEST, FETCH_CONTACTS_SUCCESS, POST_ONE_CONTACT_FAILURE, POST_ONE_CONTACT_SUCCESS } from "./contactsType";
 
-
-
 const fetchContactsRequest=()=>{
     return{
         type:FETCH_CONTACTS_REQUEST,
@@ -21,37 +19,37 @@ const fetchContactsSuccess=(payload)=>{
     }
 };
 
-const postContactsFailure=(payload)=>{
+const postContactFailure=(payload)=>{
     return{
         type:POST_ONE_CONTACT_FAILURE,
         payload
     }
 };
-const postContactsSuccess=(payload)=>{
+const postContactSuccess=(payload)=>{
     return{
         type:POST_ONE_CONTACT_SUCCESS,
         payload
     }
 };
-const deleteContactsFailure=(payload)=>{
+const deleteContactFailure=(payload)=>{
     return{
         type:DELETE_ONE_CONTACT_FAILURE,
         payload
     }
 };
-const deleteContactsSuccess=(payload)=>{
+const deleteContactSuccess=(payload)=>{
     return{
         type:DELETE_ONE_CONTACT_SUCCESS,
         payload
     }
 };
-const editOneContactFailure=(payload)=>{
+const editContactFailure=(payload)=>{
     return{
         type:EDIT_ONE_CONTACT_FAILURE,
         payload
     }
 };
-const editOneContactSuccess=(payload)=>{
+const editContactSuccess=(payload)=>{
     return{
         type:EDIT_ONE_CONTACT_SUCCESS,
         payload
@@ -60,8 +58,8 @@ const editOneContactSuccess=(payload)=>{
 
 export const fetchContacts=()=>{
     return function(dispatch){
-        dispatch(fetchCostsRequest());
-        axios.get(`http://localhost:4000/expenses`)
+        dispatch(fetchContactsRequest());
+        axios.get(`http://localhost:4000/contacts`)
         .then(res=>{
             dispatch(fetchContactsSuccess(res.data));
         })
@@ -73,46 +71,40 @@ export const fetchContacts=()=>{
 export const addOneContact=(payload)=>{
     console.log(payload)
     return function(dispatch){
-        axios.post(`http://localhost:4000/expenses`,payload)
-        .then(res=>{
-            axios.get(`http://localhost:4000/expenses`)
-            .then(res=>{
-                dispatch(postContactsSuccess(res.data));
-            })   
-        })
+        axios.post(`http://localhost:4000/contacts`,payload)
+        .then(res=> fetchContacts())
         .catch(err=>{
-            dispatch(postContactsFailure(err.message))
+            dispatch(postContactFailure(err.message))
         })
     }
 };
 export const deleteOneContact=(payload)=>{
     payload.e.stopPropagation();
     return function(dispatch){
-        axios.delete(`http://localhost:4000/expenses/${payload.id}`)
+        axios.delete(`http://localhost:4000/contacts/${payload.id}`)
         .then(res=>{
-            axios.get(`http://localhost:4000/expenses`)
+            axios.get(`http://localhost:4000/contacts`)
             .then(res=>{
-                dispatch(deleteContactsSuccess(res.data));
+                dispatch(deleteContactSuccess(res.data));
             })   
         })
         .catch(err=>{
-            dispatch(deleteContactsFailure(err.message))
+            dispatch(deleteContactFailure(err.message))
         })
     }
 };
-
 export const putOneContact=(payload)=>{
     console.log(payload)
     return function(dispatch){
-        axios.put(`http://localhost:4000/expenses/${payload.id}`,payload.formValues)
+        axios.put(`http://localhost:4000/contacts/${payload.id}`,payload.formValues)
         .then(res=>{
-            axios.get(`http://localhost:4000/expenses`)
+            axios.get(`http://localhost:4000/contacts`)
             .then(res=>{
-                dispatch(editOneContactSuccess(res.data));
+                dispatch(editContactSuccess(res.data));
             })   
         })
         .catch(err=>{
-            dispatch(editOneContactFailure(err.message))
+            dispatch(editContactFailure(err.message))
         })
     }
 };

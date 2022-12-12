@@ -1,61 +1,46 @@
-import axios from "axios";
-import { filterValue } from "../../utils/filterValue";
-import {DELETE_ONE_COST_FAILURE, DELETE_ONE_COST_SUCCESS, EDIT_ONE_COST_FAILURE, EDIT_ONE_COST_SUCCESS, FETCH_COSTS_FAILURE, FETCH_COSTS_REQUEST, FETCH_COSTS_SUCCESS, FILTER_COSTS, POST_ONE_COST_FAILURE, POST_ONE_COST_SUCCESS } from "./contactsType";
+import {DELETE_ONE_CONTACT_FAILURE, DELETE_ONE_CONTACT_SUCCESS, DELETE_ONE_COST_FAILURE, DELETE_ONE_COST_SUCCESS, EDIT_ONE_CONTACT_FAILURE, EDIT_ONE_CONTACT_SUCCESS, EDIT_ONE_COST_FAILURE, EDIT_ONE_COST_SUCCESS, FETCH_CONTACTS_FAILURE, FETCH_CONTACTS_REQUEST, FETCH_CONTACTS_SUCCESS, FETCH_COSTS_FAILURE, FETCH_COSTS_REQUEST, FETCH_COSTS_SUCCESS, FILTER_COSTS, POST_ONE_CONTACT_FAILURE, POST_ONE_CONTACT_SUCCESS, POST_ONE_COST_FAILURE, POST_ONE_COST_SUCCESS } from "./contactsType";
 
 
 const initialState={
-    costs:[],
+    contacts:[],
     error:"",
     laoding:false,
-    filters:{name:"",costRange:0,kind:""}
 }
-export const costsReducer=(state=initialState,action)=>{
+export const contactsReducer=(state=initialState,action)=>{
     switch (action.type) {
-        case FETCH_COSTS_REQUEST:{
+        case FETCH_CONTACTS_REQUEST:{
             console.log(state)
-            return {costs:[],error:"",laoding:true,filters:state.filters}
+            return {contacts:[],error:"",laoding:true}
         };
-        case FETCH_COSTS_SUCCESS:{
+        case FETCH_CONTACTS_SUCCESS:{
             console.log(state)
-            const filteredItems= filterValue(action.payload,state.filters);
-            return {costs:filteredItems,error:"",laoding:false,filters:state.filters}
+            return {contacts:action.payload,error:"",laoding:false}
         };
-        case FETCH_COSTS_FAILURE:{
+        case FETCH_CONTACTS_FAILURE:{
             console.log(state)
-            return {costs:[],error:action.payload,laoding:false,filters:state.filters}
+            return {contacts:[],error:action.payload,laoding:false}
         }
-        case POST_ONE_COST_SUCCESS:{
+        case POST_ONE_CONTACT_SUCCESS:{
             console.log(action.payload)
-            const filteredItems=filterValue(action.payload,state.filters);
-            return {costs:filteredItems,error:"",laoding:false,filters:state.filters}
+            return {contacts:action.payload,error:"",laoding:false}
         };
-        case POST_ONE_COST_FAILURE:{
-            return {costs:[],error:action.payload,laoding:false,filters:state.filters}
+        case POST_ONE_CONTACT_FAILURE:{
+            return {contacts:[],error:action.payload,laoding:false}
         };
-
-        //
-        case DELETE_ONE_COST_SUCCESS:{
+        case DELETE_ONE_CONTACT_SUCCESS:{
             console.log(action.payload)
-            const filteredItems=filterValue(action.payload,state.filters);
-            return {costs:filteredItems,error:"",laoding:false,filters:state.filters}
+            return {contacts:action.payload,error:"",laoding:false}
         };
-        case DELETE_ONE_COST_FAILURE:{
-            return {costs:[],error:action.payload,laoding:false,filters:state.filters}
+        case DELETE_ONE_CONTACT_FAILURE:{
+            return {contacts:[],error:action.payload,laoding:false}
         };
-        case EDIT_ONE_COST_SUCCESS:{
+        case EDIT_ONE_CONTACT_SUCCESS:{
             console.log(action.payload)
-            const filteredItems=filterValue(action.payload,state.filters);
-            return {costs:filteredItems,error:"",laoding:false,filters:state.filters}
+            return {contacts:action.payload,error:"",laoding:false}
         };
-        case EDIT_ONE_COST_FAILURE:{
-            return {costs:[],error:action.payload,laoding:false,filters:state.filters}
-        };
-        case FILTER_COSTS:{
-            console.log(action.payload)
-            return {costs:state.costs,error:"",laoding:false,filters:action.payload}
-        }
-        
-            
+        case EDIT_ONE_CONTACT_FAILURE:{
+            return {contacts:[],error:action.payload,laoding:false}
+        };        
         default:
             return state;
     }

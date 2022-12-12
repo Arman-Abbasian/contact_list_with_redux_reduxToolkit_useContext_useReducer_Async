@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import costsReducer from "./costs/costsReducer";
+import { contactsReducer } from "./contacts/contactsReducer";
 
 
 const rootReducer=combineReducers({
-    costs:costsReducer
+    contacts: contactsReducer
 });
 export default rootReducer;
