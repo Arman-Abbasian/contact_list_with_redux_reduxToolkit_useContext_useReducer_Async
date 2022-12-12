@@ -11,11 +11,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useContactsActions } from "../../providers/ContactsProvider";
 import { useDispatch } from "react-redux";
 import { putOneContact } from "../../redux/contacts/contactsAction";
 
-const EditContactRedux = () => {
+const EditContactReduxToolkit = () => {
     const dispatch=useDispatch();
     const id=useParams().id;
     const [formValues,setFormValues]=useState(null);
@@ -61,4 +60,4 @@ console.log(formik.isValid);
      );
 }
  
-export default EditContactRedux;
+export default EditContactReduxToolkit;

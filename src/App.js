@@ -16,13 +16,24 @@ import ContactsContext from './components/useContext/ContactsContext';
 import ContactDetailContext from './components/useContext/ContactDetailContext';
 import EditContactContext from './components/useContext/ContactEditContext';
 
-//redux
+//redux & reduxToolkig
 import { Provider } from 'react-redux';
-import store from './redux/store.js';
+
+
+//redux
+//import store from './redux/store.js';
 import AddContactRedux from './components/useRedux/AddContactRedux';
 import ContactsRedux from './components/useRedux/ContactsRedux';
 import ContactDetailRedux from './components/useRedux/ContactDetailRedux';
 import EditContactRedux from './components/useRedux/ContactEditRedux';
+
+
+//reduxToolkit
+import {store} from './feature/store';
+import AddContactReduxToolkit from './components/useReduxToolkit/AddContactReduxToolkit';
+import ContactsReduxToolkit from './components/useReduxToolkit/ContactsReduxToolkit';
+import ContactDetailReduxToolkit from './components/useReduxToolkit/ContactDetailReduxToolkit';
+import EditContactReduxToolkit from './components/useReduxToolkit/ContactEditReduxToolkit';
 
 function App() {
   const [contacts,setContacts]=useState(null);
@@ -94,14 +105,29 @@ function App() {
           //  </ContactsProvider>
           // </Layout>
         
+          // <Layout>
+          //   <Provider store={store}>
+          //   <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
+          //      <Routes> 
+          //        <Route path='/add' element={<AddContactRedux />} />
+          //        <Route path='/' element={<ContactsRedux />}/>
+          //        <Route path='/contact/:id' element={<ContactDetailRedux />}/>
+          //        <Route path='/edit/:id' element={<EditContactRedux />}/>
+          //      </Routes>
+          //   </div>
+          //   <Toaster />
+          //   </Provider>
+          // </Layout>
+
+
           <Layout>
             <Provider store={store}>
             <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
                <Routes> 
-                 <Route path='/add' element={<AddContactRedux />} />
-                 <Route path='/' element={<ContactsRedux />}/>
-                 <Route path='/contact/:id' element={<ContactDetailRedux />}/>
-                 <Route path='/edit/:id' element={<EditContactRedux />}/>
+                 <Route path='/add' element={<AddContactReduxToolkit />} />
+                 <Route path='/' element={<ContactsReduxToolkit />}/>
+                 <Route path='/contact/:id' element={<ContactDetailReduxToolkit />}/>
+                 <Route path='/edit/:id' element={<EditContactReduxToolkit />}/>
                </Routes>
             </div>
             <Toaster />
