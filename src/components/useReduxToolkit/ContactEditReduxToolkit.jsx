@@ -13,6 +13,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { putOneContact } from "../../redux/contacts/contactsAction";
+import { changeAsyncContact } from "../../feature/contactsSlice";
 
 const EditContactReduxToolkit = () => {
     const dispatch=useDispatch();
@@ -29,7 +30,7 @@ const EditContactReduxToolkit = () => {
     },[])
     const onSubmit=(values, { resetForm })=>{
         resetForm();
-        dispatch(putOneContact({formValues:values,id}));
+        dispatch(changeAsyncContact({formValues:values,id}));
         navigate("/")
     }
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -44,8 +45,7 @@ const formik=useFormik({initialValues:formValues,onSubmit,validationSchema,valid
 console.log(formik.errors);
 console.log(formik.touched)
 console.log(formik.isValid);
-    return ( 
-        
+    return (       
         <div>
             <form onSubmit={formik.handleSubmit} className="max-w-xs mx-auto">
                 <Input name='name'  formik={formik} logo={<MdPersonOutline className="w-6 h-6 text-primary-4 ml-1" />} />
@@ -59,5 +59,4 @@ console.log(formik.isValid);
         </div>
      );
 }
- 
 export default EditContactReduxToolkit;

@@ -9,14 +9,14 @@ import { AiOutlinePhone } from "react-icons/ai";
 import Textarea from "../../common/Textarea";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addOneContact } from "../../redux/contacts/contactsAction";
+import { addAsyncContact } from "../../feature/contactsSlice";
 
 const AddContactReduxToolkit = () => {
     const dispatch=useDispatch();
     const initialValues={name:"",email:"",mobile:"",phone:"",address:""};
     let navigate = useNavigate();
     const onSubmit=(values, { resetForm })=>{
-        dispatch(addOneContact(values))
+        dispatch(addAsyncContact(values))
         resetForm();
         navigate("/")
     }
