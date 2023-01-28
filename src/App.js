@@ -105,34 +105,34 @@ function App() {
           //  </ContactsProvider>
           // </Layout>
         
-          // <Layout>
-          //   <Provider store={store}>
-          //   <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
-          //      <Routes> 
-          //        <Route path='/add' element={<AddContactRedux />} />
-          //        <Route path='/' element={<ContactsRedux />}/>
-          //        <Route path='/contact/:id' element={<ContactDetailRedux />}/>
-          //        <Route path='/edit/:id' element={<EditContactRedux />}/>
-          //      </Routes>
-          //   </div>
-          //   <Toaster />
-          //   </Provider>
-          // </Layout>
-
-
           <Layout>
             <Provider store={store}>
             <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
                <Routes> 
-                 <Route path='/add' element={<AddContactReduxToolkit />} />
-                 <Route path='/' element={<ContactsReduxToolkit />}/>
-                 <Route path='/contact/:id' element={<ContactDetailReduxToolkit />}/>
-                 <Route path='/edit/:id' element={<EditContactReduxToolkit />}/>
+                 <Route path='/add' element={<AddContactRedux />} />
+                 <Route path='/' element={<ContactsRedux />}/>
+                 <Route path='/contact/:id' element={<ContactDetailRedux />}/>
+                 <Route path='/edit/:id' element={<EditContactRedux />}/>
                </Routes>
             </div>
             <Toaster />
             </Provider>
           </Layout>
+
+
+          // <Layout>
+          //   <Provider store={store}>
+          //   <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
+          //      <Routes> 
+          //        <Route path='/add' element={<AddContactReduxToolkit />} />
+          //        <Route path='/' element={<ContactsReduxToolkit />}/>
+          //        <Route path='/contact/:id' element={<ContactDetailReduxToolkit />}/>
+          //        <Route path='/edit/:id' element={<EditContactReduxToolkit />}/>
+          //      </Routes>
+          //   </div>
+          //   <Toaster />
+          //   </Provider>
+          // </Layout>
         
    
   );
