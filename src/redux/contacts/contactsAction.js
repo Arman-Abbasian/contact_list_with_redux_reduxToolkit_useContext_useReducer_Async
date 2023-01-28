@@ -19,7 +19,6 @@ const fetchContactsSuccess=(payload)=>{
         payload
     }
 };
-
 const postContactFailure=(payload)=>{
     return{
         type:POST_ONE_CONTACT_FAILURE,
@@ -39,6 +38,7 @@ const deleteContactFailure=(payload)=>{
     }
 };
 const deleteContactSuccess=(payload)=>{
+    console.log(payload)
     return{
         type:DELETE_ONE_CONTACT_SUCCESS,
         payload

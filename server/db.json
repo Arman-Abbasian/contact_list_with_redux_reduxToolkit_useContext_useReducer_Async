@@ -1,28 +1,12 @@
 {
   "contacts": [
     {
-      "name": "Arman Abbasian",
-      "email": "abasian.arman@yahoo.com",
+      "name": "Arman Abbisian",
+      "email": "abasian.arman@gmail.com",
       "mobile": "09331575385",
-      "phone": "02636670541",
-      "address": "arman abbasian detail",
-      "id": 1
-    },
-    {
-      "name": "Mahmood kafrashi",
-      "email": "kabianpour@yahoo.com",
-      "mobile": "09331575385",
-      "phone": "02636670541",
-      "address": "ddddddddddd",
-      "id": 2
-    },
-    {
-      "name": "ali firouzain",
-      "email": "firouzian.Ali@gmail.com",
-      "mobile": "0933322",
       "phone": "02636670541",
       "address": "dddddddddddddd",
-      "id": 3
+      "id": 1
     }
   ]
 }

@@ -21,7 +21,7 @@ import { Provider } from 'react-redux';
 
 
 //redux
-//import store from './redux/store.js';
+import store from './redux/store.js';
 import AddContactRedux from './components/useRedux/AddContactRedux';
 import ContactsRedux from './components/useRedux/ContactsRedux';
 import ContactDetailRedux from './components/useRedux/ContactDetailRedux';
@@ -29,53 +29,53 @@ import EditContactRedux from './components/useRedux/ContactEditRedux';
 
 
 //reduxToolkit
-import {store} from './feature/store';
+//import {store} from './feature/store';
 import AddContactReduxToolkit from './components/useReduxToolkit/AddContactReduxToolkit';
 import ContactsReduxToolkit from './components/useReduxToolkit/ContactsReduxToolkit';
 import ContactDetailReduxToolkit from './components/useReduxToolkit/ContactDetailReduxToolkit';
 import EditContactReduxToolkit from './components/useReduxToolkit/ContactEditReduxToolkit';
 
 function App() {
-  const [contacts,setContacts]=useState(null);
-  useEffect(()=>{
-    axios.get(`http://localhost:4000/contacts`)
-    .then(res=>setContacts(res.data))
-    .catch(err=>setContacts(err.message))
+  // const [contacts,setContacts]=useState(null);
+  // useEffect(()=>{
+  //   axios.get(`http://localhost:4000/contacts`)
+  //   .then(res=>setContacts(res.data))
+  //   .catch(err=>setContacts(err.message))
 
-  },[]);
+  // },[]);
 
-  const deleteHandler=async(e,id)=>{
-    try {
-      console.log(id);
-      e.stopPropagation();
-      await axios.delete(`http://localhost:4000/contacts/${id}`);
-      toast.success("contact deleted successfully");
-      const {data}=await axios.get(`http://localhost:4000/contacts`);
-      setContacts(data);
-    } catch (err) {
-      toast.error(err.message);
-    }
-  }
-  const addHandler=async(formValues)=>{
-    try {
-      await axios.post(`http://localhost:4000/contacts`,formValues);
-      toast.success("contact added successfully");
-      const {data}=await axios.get(`http://localhost:4000/contacts`)
-      setContacts(data)
-    } catch (err) {
-      toast.error(err.message)
-    }
-  }
-  const updateHandler=async(formValues,id)=>{
-    try {
-      await axios.put(`http://localhost:4000/contacts/${id}`,formValues);
-      toast.success("contact updated successfully");
-      const {data}=await axios.get(`http://localhost:4000/contacts`)
-      setContacts(data)
-    } catch (err) {
-      toast.error(err.message)
-    }
-  }
+  // const deleteHandler=async(e,id)=>{
+  //   try {
+  //     console.log(id);
+  //     e.stopPropagation();
+  //     await axios.delete(`http://localhost:4000/contacts/${id}`);
+  //     toast.success("contact deleted successfully");
+  //     const {data}=await axios.get(`http://localhost:4000/contacts`);
+  //     setContacts(data);
+  //   } catch (err) {
+  //     toast.error(err.message);
+  //   }
+  // }
+  // const addHandler=async(formValues)=>{
+  //   try {
+  //     await axios.post(`http://localhost:4000/contacts`,formValues);
+  //     toast.success("contact added successfully");
+  //     const {data}=await axios.get(`http://localhost:4000/contacts`)
+  //     setContacts(data)
+  //   } catch (err) {
+  //     toast.error(err.message)
+  //   }
+  // }
+  // const updateHandler=async(formValues,id)=>{
+  //   try {
+  //     await axios.put(`http://localhost:4000/contacts/${id}`,formValues);
+  //     toast.success("contact updated successfully");
+  //     const {data}=await axios.get(`http://localhost:4000/contacts`)
+  //     setContacts(data)
+  //   } catch (err) {
+  //     toast.error(err.message)
+  //   }
+  // }
 
   return ( 
     
