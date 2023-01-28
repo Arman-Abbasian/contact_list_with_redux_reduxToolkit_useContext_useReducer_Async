@@ -43,7 +43,6 @@ console.log(formik.isValid);
                 <Input name='phone'  formik={formik} logo={<AiOutlinePhone className="w-6 h-6 text-primary-4 ml-1" />}/>
                 <Textarea name='address'  formik={formik} logo={<CiLocationOn className="w-6 h-6 text-primary-4 ml-1" />} />
                 <button className={`w-full p-2 rounded-sm bg-primary-4 mt-10 opacity-70  ${formik.isValid && 'opacity-100 cursor-pointer'}`} disabled={false} type="submit">Add</button>
-                
             </form>
         </div>
      );
