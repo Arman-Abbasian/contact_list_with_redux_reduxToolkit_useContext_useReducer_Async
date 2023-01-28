@@ -10,7 +10,7 @@ import FilterContacts from "./FilterContacts";
 
 const ContactsRedux = () => {
   const contacts = useSelector((state) => state.contacts);
-  console.log(contacts)
+  console.log(contacts);
   const dispatch = useDispatch();
   const [filters, setFilters] = useState({
     name: "",
