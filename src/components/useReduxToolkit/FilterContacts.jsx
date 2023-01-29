@@ -6,14 +6,6 @@ import { useSelector } from "react-redux";
 
 const FilterContacts = ({ filters, changeHandler }) => {
   const contacts = useSelector((state) => state.contacts);
-  console.log(contacts);
-  const [options, setOptions] = useState({
-    name: null,
-    email: null,
-    mobile: null,
-    phone: null,
-    address: null,
-  });
   const [showFilterSection, setShowFilterSection] = useState(false);
 
   return (

@@ -91,20 +91,20 @@ function App() {
         //   <Toaster />
         // </Layout>
       
-        //use context
-          <Layout>
-            <ContactsProvider>
-              <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
-                <Routes> 
-                  <Route path='/add' element={<AddContactContext />} />
-                  <Route path='/' element={<ContactsContext />}/>
-                  <Route path='/contact/:id' element={<ContactDetailContext />}/>
-                  <Route path='/edit/:id' element={<EditContactContext />}/>
-                </Routes>
-              </div>
-           <Toaster />
-           </ContactsProvider>
-          </Layout>
+        // //use context
+        //   <Layout>
+        //     <ContactsProvider>
+        //       <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
+        //         <Routes> 
+        //           <Route path='/add' element={<AddContactContext />} />
+        //           <Route path='/' element={<ContactsContext />}/>
+        //           <Route path='/contact/:id' element={<ContactDetailContext />}/>
+        //           <Route path='/edit/:id' element={<EditContactContext />}/>
+        //         </Routes>
+        //       </div>
+        //    <Toaster />
+        //    </ContactsProvider>
+        //   </Layout>
         // //redux
         //   <Layout>
         //     <Provider store={store}>
@@ -120,20 +120,20 @@ function App() {
         //     </Provider>
         //   </Layout>
 
-    // //reduc toolkit
-    //       <Layout>
-    //         <Provider store={store}>
-    //         <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
-    //            <Routes> 
-    //              <Route path='/add' element={<AddContactReduxToolkit />} />
-    //              <Route path='/' element={<ContactsReduxToolkit />}/>
-    //              <Route path='/contact/:id' element={<ContactDetailReduxToolkit />}/>
-    //              <Route path='/edit/:id' element={<EditContactReduxToolkit />}/>
-    //            </Routes>
-    //         </div>
-    //         <Toaster />
-    //         </Provider>
-    //       </Layout>
+    //redux toolkit
+          <Layout>
+            <Provider store={store}>
+            <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
+               <Routes> 
+                 <Route path='/add' element={<AddContactReduxToolkit />} />
+                 <Route path='/' element={<ContactsReduxToolkit />}/>
+                 <Route path='/contact/:id' element={<ContactDetailReduxToolkit />}/>
+                 <Route path='/edit/:id' element={<EditContactReduxToolkit />}/>
+               </Routes>
+            </div>
+            <Toaster />
+            </Provider>
+          </Layout>
         
    
   );

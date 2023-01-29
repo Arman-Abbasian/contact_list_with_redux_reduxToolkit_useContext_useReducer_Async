@@ -1,5 +1,6 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 
 export const getAsyncContacts=createAsyncThunk("contacts/getAsyncContacts", async (payload,{rejectWithValue})=>{
@@ -7,25 +8,31 @@ export const getAsyncContacts=createAsyncThunk("contacts/getAsyncContacts", asyn
     const response=await axios.get(`http://localhost:4000/contacts`);
     return response.data;
   } catch (error) {
+    toast.error(error.message)
     return rejectWithValue([],error)
   }
 });
 
 export const addAsyncContact=createAsyncThunk("contacts/addAsyncContact", async (payload,{rejectWithValue})=>{
   try {
-    await axios.post(`http://localhost:4000/contacts`,payload.formValues)
+    console.log(payload)
+    await axios.post(`http://localhost:4000/contacts`,payload)
+    toast.success("data added successfully")
     const {data}=await axios.get(`http://localhost:4000/contacts`)
     return {data:data};
   } catch (error) {
+    toast.error(error.message)
     return rejectWithValue([],error)
   }
 });
 export const removeAsyncContact=createAsyncThunk("contacts/removeAsyncContact", async (payload,{rejectWithValue})=>{
   try {
-    await axios.delete(`http://localhost:4000/contacts/${payload.id}`)
+    await axios.delete(`http://localhost:4000/contacts/${payload}`)
+    toast.success("data removed successfully")
     const {data}=await axios.get(`http://localhost:4000/contacts`)
     return  data;
   } catch (error) {
+    toast.error(error.message)
     return rejectWithValue([],error)
   }
 });
@@ -33,10 +40,12 @@ export const changeAsyncContact=createAsyncThunk("contacts/changeAsyncContact", 
   try {
     console.log(payload)
     await axios.put(`http://localhost:4000/contacts/${payload.id}`,payload.formValues);
+    toast.success("data updated successfully")
     const {data}=await axios.get(`http://localhost:4000/contacts`)
     return  data 
     
   } catch (error) {
+    toast.error(error.message)
     return rejectWithValue([],error)
   }
 });
