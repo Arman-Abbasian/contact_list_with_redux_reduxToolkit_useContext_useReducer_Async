@@ -11,7 +11,6 @@ import FilterContacts from "./FilterContacts";
 const ContactsRedux = () => {
   const contacts = useSelector((state) => state.contacts);
   const [showContacts, setShowContacts] = useState(null);
-  console.log(contacts);
   const dispatch = useDispatch();
   const [filters, setFilters] = useState({
     name: "",
