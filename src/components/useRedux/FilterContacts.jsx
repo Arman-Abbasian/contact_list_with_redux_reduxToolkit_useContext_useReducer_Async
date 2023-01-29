@@ -81,7 +81,7 @@ const FilterContacts = ({ filters, changeHandler }) => {
   //     .catch((err) => toast.error(err.message));
   // }
   return (
-    <div className="mb-10">
+    <div className="mb-10 w-full container mx-auto max-w-3xl">
       <button
         className="w-full p-2 rounded-sm bg-primary-4 mb-4 shadow-md shadow-primary_light_green"
         onClick={() => setShowFilterSection(!showFilterSection)}
@@ -90,13 +90,13 @@ const FilterContacts = ({ filters, changeHandler }) => {
       </button>
       {contacts.data && (
         <div
-          className={`sm:grid-cols-2 gap-8  w-full relative ${
+          className={`md:grid-cols-2 gap-8  w-full relative ${
             showFilterSection ? "grid" : "hidden"
           }`}
         >
           {/* make name options */}
           <>
-            <div className="border rounded-sm focus:border-2 flex items-center w-full p-2 gap-2">
+            <div className="border rounded-sm focus:border-2 border-primary-4 flex items-center w-full p-2 gap-2">
               <span>
                 <AiOutlineFilter className="w-6 h-6 text-primary-4" />
               </span>
@@ -122,7 +122,7 @@ const FilterContacts = ({ filters, changeHandler }) => {
 
           {/* make email options */}
           <>
-            <div className="border rounded-sm focus:border-2 flex items-center w-full p-2 gap-2">
+            <div className="border rounded-sm focus:border-2 border-primary-4 flex items-center w-full p-2 gap-2">
               <span>
                 <AiOutlineFilter className="w-6 h-6 text-primary-4" />
               </span>
@@ -148,7 +148,7 @@ const FilterContacts = ({ filters, changeHandler }) => {
 
           {/* make enter delivery options */}
           <>
-            <div className="border rounded-sm focus:border-2 flex items-center w-full p-2 gap-2">
+            <div className="border rounded-sm focus:border-2 border-primary-4 flex items-center w-full p-2 gap-2">
               <span>
                 <AiOutlineFilter className="w-6 h-6 text-primary-4" />
               </span>
@@ -173,7 +173,7 @@ const FilterContacts = ({ filters, changeHandler }) => {
           </>
 
           <>
-            <div className="border rounded-sm focus:border-2 flex items-center w-full p-2 gap-2">
+            <div className="border rounded-sm focus:border-2 border-primary-4 flex items-center w-full p-2 gap-2">
               <span>
                 <AiOutlineFilter className="w-6 h-6 text-primary-4" />
               </span>
@@ -198,7 +198,7 @@ const FilterContacts = ({ filters, changeHandler }) => {
           </>
 
           <>
-            <div className="border rounded-sm focus:border-2 flex items-center w-full p-2 gap-2">
+            <div className="border rounded-sm focus:border-2 border-primary-4 flex items-center w-full p-2 gap-2">
               <span>
                 <AiOutlineFilter className="w-6 h-6 text-primary-4" />
               </span>

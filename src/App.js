@@ -107,7 +107,7 @@ function App() {
         
           <Layout>
             <Provider store={store}>
-            <div className="flex flex-col gap-2 mb-12 container max-w-md mx-auto">
+            <div className="flex flex-col gap-2 mb-12 container max-w-xl mx-auto p-4">
                <Routes> 
                  <Route path='/add' element={<AddContactRedux />} />
                  <Route path='/' element={<ContactsRedux />}/>
