@@ -10,6 +10,7 @@ import FilterContacts from "./FilterContacts";
 
 const ContactsRedux = () => {
   const contacts = useSelector((state) => state.contacts);
+  const [showContacts, setShowContacts] = useState(contacts);
   console.log(contacts);
   const dispatch = useDispatch();
   const [filters, setFilters] = useState({
@@ -22,6 +23,26 @@ const ContactsRedux = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, []);
+  useEffect(() => {
+    if (contacts.data) {
+      let filteredContacts = contacts.data;
+      filteredContacts = filterContact(contacts.data, "name");
+      filteredContacts = filterContact(filteredContacts, "email");
+      filteredContacts = filterContact(contacts.data, "mobile");
+      filteredContacts = filterContact(filteredContacts, "phone");
+      filteredContacts = filterContact(filteredContacts, "address");
+      console.log(filteredContacts);
+      setShowContacts({ ...contacts, data: filteredContacts });
+    }
+  }, [contacts]);
+  //filter name
+  const filterContact = (arr, name) => {
+    if (filters[name] === "") {
+      return arr;
+    } else {
+      return arr.filter((item) => item[name] === filters[name]);
+    }
+  };
   const changeHandler = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
