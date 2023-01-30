@@ -8,10 +8,13 @@ import { CiLocationOn } from "react-icons/ci";
 import { AiOutlinePhone } from "react-icons/ai";
 import Textarea from "../../common/Textarea";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addOneContact } from "../../redux/contacts/contactsAction";
+import { toast } from "react-hot-toast";
+import { addAsyncContact } from "../../feature/contactsSlice";
 
 const AddContactRedux = () => {
+  const contacts = useSelector((state) => state.contacts);
   const dispatch = useDispatch();
   const initialValues = {
     name: "",
@@ -22,9 +25,21 @@ const AddContactRedux = () => {
   };
   let navigate = useNavigate();
   const onSubmit = (values, { resetForm }) => {
-    dispatch(addOneContact(values));
-    resetForm();
-    navigate("/");
+    const duplicateMobileNumber = contacts.data.find(
+      (item) => item.mobile === values.mobile
+    );
+    const duplicateEmail = contacts.data.find(
+      (item) => item.email === values.email
+    );
+    if (duplicateMobileNumber) {
+      toast.error("mobile number already existed");
+    } else if (duplicateEmail) {
+      toast.error("email already existed");
+    } else {
+      dispatch(addAsyncContact(values));
+      resetForm();
+      navigate("/");
+    }
   };
 
   const phoneRegExp =
