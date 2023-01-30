@@ -19,7 +19,7 @@ export const addAsyncContact=createAsyncThunk("contacts/addAsyncContact", async 
     await axios.post(`http://localhost:4000/contacts`,payload)
     toast.success("data added successfully")
     const {data}=await axios.get(`http://localhost:4000/contacts`)
-    return {data:data};
+    return  data;
   } catch (error) {
     toast.error(error.message)
     return rejectWithValue([],error)
