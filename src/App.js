@@ -21,7 +21,7 @@ import { Provider } from 'react-redux';
 
 
 //redux
-import store from './redux/store.js';
+//import store from './redux/store.js';
 import AddContactRedux from './components/useRedux/AddContactRedux';
 import ContactsRedux from './components/useRedux/ContactsRedux';
 import ContactDetailRedux from './components/useRedux/ContactDetailRedux';
@@ -29,7 +29,7 @@ import EditContactRedux from './components/useRedux/ContactEditRedux';
 
 
 //reduxToolkit
-//import {store} from './feature/store';
+import {store} from './feature/store';
 import AddContactReduxToolkit from './components/useReduxToolkit/AddContactReduxToolkit';
 import ContactsReduxToolkit from './components/useReduxToolkit/ContactsReduxToolkit';
 import ContactDetailReduxToolkit from './components/useReduxToolkit/ContactDetailReduxToolkit';
@@ -91,20 +91,20 @@ function App() {
         //   <Toaster />
         // </Layout>
       
-        //use context
-          <Layout>
-            <ContactsProvider>
-              <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
-                <Routes> 
-                  <Route path='/add' element={<AddContactContext />} />
-                  <Route path='/' element={<ContactsContext />}/>
-                  <Route path='/contact/:id' element={<ContactDetailContext />}/>
-                  <Route path='/edit/:id' element={<EditContactContext />}/>
-                </Routes>
-              </div>
-           <Toaster />
-           </ContactsProvider>
-          </Layout>
+        // //use context
+        //   <Layout>
+        //     <ContactsProvider>
+        //       <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
+        //         <Routes> 
+        //           <Route path='/add' element={<AddContactContext />} />
+        //           <Route path='/' element={<ContactsContext />}/>
+        //           <Route path='/contact/:id' element={<ContactDetailContext />}/>
+        //           <Route path='/edit/:id' element={<EditContactContext />}/>
+        //         </Routes>
+        //       </div>
+        //    <Toaster />
+        //    </ContactsProvider>
+        //   </Layout>
         // //redux
         //   <Layout>
         //     <Provider store={store}>
@@ -120,20 +120,20 @@ function App() {
         //     </Provider>
         //   </Layout>
 
-    // //redux toolkit
-    //       <Layout>
-    //         <Provider store={store}>
-    //         <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
-    //            <Routes> 
-    //              <Route path='/add' element={<AddContactReduxToolkit />} />
-    //              <Route path='/' element={<ContactsReduxToolkit />}/>
-    //              <Route path='/contact/:id' element={<ContactDetailReduxToolkit />}/>
-    //              <Route path='/edit/:id' element={<EditContactReduxToolkit />}/>
-    //            </Routes>
-    //         </div>
-    //         <Toaster />
-    //         </Provider>
-    //       </Layout>
+    //redux toolkit
+          <Layout>
+            <Provider store={store}>
+            <div className="flex flex-col gap-2 mb-12 container max-w-3xl mx-auto p-4">
+               <Routes> 
+                 <Route path='/add' element={<AddContactReduxToolkit />} />
+                 <Route path='/' element={<ContactsReduxToolkit />}/>
+                 <Route path='/contact/:id' element={<ContactDetailReduxToolkit />}/>
+                 <Route path='/edit/:id' element={<EditContactReduxToolkit />}/>
+               </Routes>
+            </div>
+            <Toaster />
+            </Provider>
+          </Layout>
         
    
   );
