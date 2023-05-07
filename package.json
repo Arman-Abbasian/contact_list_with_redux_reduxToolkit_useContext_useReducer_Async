@@ -1,6 +1,6 @@
 {
   "name": "contact_list",
-  "homepage": "http://Arman-Abbasian.github.io/contact_list",
+  "homepage": "http://Arman-Abbasian.github.io/contact_list_with_redux_reduxToolkit_useContext_useReducer_Async",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
