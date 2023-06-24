@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 
 export const getAsyncContacts=createAsyncThunk("contacts/getAsyncContacts", async (payload,{rejectWithValue})=>{
   try {
-    const response=await axios.get(`http://localhost:4000/contacts`);
+    const response=await axios.get(`https://api.arman-abasian.ir/contacts`);
     return response.data;
   } catch (error) {
     toast.error(error.message)
@@ -16,9 +16,9 @@ export const getAsyncContacts=createAsyncThunk("contacts/getAsyncContacts", asyn
 export const addAsyncContact=createAsyncThunk("contacts/addAsyncContact", async (payload,{rejectWithValue})=>{
   try {
     console.log(payload)
-    await axios.post(`http://localhost:4000/contacts`,payload)
+    await axios.post(`https://api.arman-abasian.ir/contacts`,payload)
     toast.success("data added successfully")
-    const {data}=await axios.get(`http://localhost:4000/contacts`)
+    const {data}=await axios.get(`https://api.arman-abasian.ir/contacts`)
     return  data;
   } catch (error) {
     toast.error(error.message)
@@ -27,9 +27,9 @@ export const addAsyncContact=createAsyncThunk("contacts/addAsyncContact", async 
 });
 export const removeAsyncContact=createAsyncThunk("contacts/removeAsyncContact", async (payload,{rejectWithValue})=>{
   try {
-    await axios.delete(`http://localhost:4000/contacts/${payload}`)
+    await axios.delete(`https://api.arman-abasian.ir/contacts/${payload}`)
     toast.success("data removed successfully")
-    const {data}=await axios.get(`http://localhost:4000/contacts`)
+    const {data}=await axios.get(`https://api.arman-abasian.ir/contacts`)
     return  data;
   } catch (error) {
     toast.error(error.message)
@@ -39,9 +39,9 @@ export const removeAsyncContact=createAsyncThunk("contacts/removeAsyncContact", 
 export const changeAsyncContact=createAsyncThunk("contacts/changeAsyncContact", async (payload,{rejectWithValue})=>{
   try {
     console.log(payload)
-    await axios.put(`http://localhost:4000/contacts/${payload.id}`,payload.formValues);
+    await axios.put(`https://api.arman-abasian.ir/contacts/${payload.id}`,payload.formValues);
     toast.success("data updated successfully")
-    const {data}=await axios.get(`http://localhost:4000/contacts`)
+    const {data}=await axios.get(`https://api.arman-abasian.ir/contacts`)
     return  data 
     
   } catch (error) {
