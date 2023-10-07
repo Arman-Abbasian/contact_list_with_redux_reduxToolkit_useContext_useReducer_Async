@@ -12,8 +12,9 @@
 <p width="960" style="padding-right:40px;" align="left" >react-hot-toast</p>
 
 # summary of project
-In this project i worked on a expense-tracker app to manage the costs and incomes of a person. i try to use from three method: 1-useContext, 2-redux, 3-redux-toolkit
-to make and manage global states and compare this three methods.
+In this project i worked on a contact list  app to manage the contacts of a persons. 
+user can add a person to contact list, delete a person from contact list, edit a person infomation in contact list and see all the contact (CRUD)
+i try to use from three method: 1-useContext, 2-redux, 3-redux-toolkit to make and manage global states and compare this three methods.
 
 # overview of project
 
